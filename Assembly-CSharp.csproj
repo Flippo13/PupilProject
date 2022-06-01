@@ -100,6 +100,7 @@
      <Compile Include="Assets\ViveSR\Scripts\Lip\SRanipal_LipShapeTableDrawer_v2.cs" />
      <Compile Include="Assets\ViveSR\Scripts\Eye\Sample\SRanipal_MirrorCameraSample_Eye.cs" />
      <Compile Include="Assets\Viveport\Example\Scripts\ViveportDemo_DLC.cs" />
+     <Compile Include="Assets\Scripts\MoveInFrontofUser.cs" />
      <None Include="Assets\ViveSR\Shaders\Unlit-Alpha2Gray.shader" />
      <None Include="Assets\ViveSR\Shaders\DartBoardShader.shader" />
     <Reference Include="UnityEngine">

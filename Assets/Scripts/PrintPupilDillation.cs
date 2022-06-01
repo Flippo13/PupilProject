@@ -8,7 +8,7 @@ public class PrintPupilDillation : MonoBehaviour
 {
     string filename = "";
     public ImageSlideshow imageSlideShow; 
-    private ViveSR.anipal.Eye.SingleEyeData singleEyeData;
+    private static ViveSR.anipal.Eye.SingleEyeData singleEyeData;
 
     private float pupilDiameterLeft;
     private float pupilDiameterRight; 
@@ -22,6 +22,7 @@ public class PrintPupilDillation : MonoBehaviour
     void Start()
     {
         timeLeft = timer; 
+        singleEyeData = new ViveSR.anipal.Eye.SingleEyeData();
         pupilDiameterLeft = singleEyeData.pupil_diameter_mm;
 
         filename = Application.dataPath + "/pupilDiameter.csv";
@@ -34,6 +35,7 @@ public class PrintPupilDillation : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        pupilDiameterLeft = singleEyeData.pupil_diameter_mm;
         timeLeft -= Time.deltaTime; 
 //        Debug.Log(timeLeft);
         if ((timeLeft / timer) < 0){
@@ -49,7 +51,7 @@ public class PrintPupilDillation : MonoBehaviour
 
     public void WriteToCSV(){
         TextWriter tw = new StreamWriter(filename,true); 
-        tw.WriteLine(pupilDiameterLeft.ToString() + "/," + imageName + "/," + Time.timeSinceLevelLoad); 
+        tw.WriteLine(pupilDiameterLeft.ToString() + "," + imageName + "," + Time.timeSinceLevelLoad); 
         tw.Close();
     }
 }

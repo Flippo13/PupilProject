@@ -22,6 +22,7 @@ public class ShownImageEvent : UnityEvent<string>
 public class ImageSlideshow : MonoBehaviour
 {
     public Sprite[] imageArray;
+    public Sprite[] neutralImageArray; 
     public float showImageDuration;
     public float fadeOutInDuration;
     public bool manual;
@@ -41,7 +42,7 @@ public class ImageSlideshow : MonoBehaviour
     private bool showNeutralImage = true;
 
     private Sprite neutralImage;
-    private SlideShowSate currState = SlideShowSate.ShowImage;
+    private SlideShowSate currState = SlideShowSate.FadeIn;
 
     public ShownImageEvent imageChangeEvent;
 
@@ -54,8 +55,8 @@ public class ImageSlideshow : MonoBehaviour
         showImageTimeLeft = showImageDuration;
         fadeSpeed = 1/fadeOutInDuration; 
         currImage = GetComponent<Image>();
-        SetNewNeutralImage(); 
-
+        //SetNewNeutralImage(); 
+        neutralImage = neutralImageArray[0];
         currImage.sprite = neutralImage;
 
         imageChangeEvent.AddListener(printPupilDillation.NewImage);
@@ -81,33 +82,16 @@ public class ImageSlideshow : MonoBehaviour
             else if (currState == SlideShowSate.FadeIn) {
                 FadeOutIn(false);
             }
-
-
-            /*
-            showImageTimeLeft -= Time.deltaTime; 
-                if (showImageTimeLeft <= 0){
-                    fadingOut = true; 
-                }
-            if (fadingOut) {
-                if(FadeOutIn(true))
-                    NextImage();
-            }
-            if (fadingIn) {
-                if(FadeOutIn(false)) {
-                    Debug.Log("Hey");
-                    showImageTimeLeft = showImageDuration;
-                    fadingIn = false;
-                }
-            } */
         } 
     }
 
     public void NextImage() {
         //Debug.Log("Current Index " + index);
       if (showNeutralImage) {
-                if (imageArray[index].name == "Neutral"+neutralIndex){
+                if ((index % 4) == 0){
                     SetNewNeutralImage();
                 }
+                
                 currImage.sprite = neutralImage;
                 showImageTimeLeft = showImageDuration;
                 imageChangeEvent.Invoke(currImage.sprite.name);
@@ -135,10 +119,10 @@ public class ImageSlideshow : MonoBehaviour
     private void SetNewNeutralImage(){
         Debug.Log("New Neutral image");
         neutralIndex++;
-        for(int i = 0; i < imageArray.Length;i++){
-            if (imageArray[i].name == "Neutral"+neutralIndex)
+        for(int i = 0; i < neutralImageArray.Length;i++){
+            if (neutralImageArray[i].name == "Neutral"+neutralIndex)
             {
-                neutralImage = imageArray[i];
+                neutralImage = neutralImageArray[i];
             }
         }
     }
