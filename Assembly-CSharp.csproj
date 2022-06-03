@@ -72,6 +72,7 @@
      <Compile Include="Assets\Viveport\Example\Scripts\ViveportDemo_Subscription.cs" />
      <Compile Include="Assets\Viveport\Scripts\Viveport.cs" />
      <Compile Include="Assets\Viveport\Example\Scripts\ViveportPreviewDemo_ViveportArcadeSession.cs" />
+     <Compile Include="Assets\Scripts\MoveInFrontofUser.cs" />
      <Compile Include="Assets\Viveport\Scripts\LitJson\Lexer.cs" />
      <Compile Include="Assets\Viveport\Scripts\Viveport_Internal_Android.cs" />
      <Compile Include="Assets\Viveport\Scripts\LitJson\JsonWriter.cs" />
@@ -100,7 +101,6 @@
      <Compile Include="Assets\ViveSR\Scripts\Lip\SRanipal_LipShapeTableDrawer_v2.cs" />
      <Compile Include="Assets\ViveSR\Scripts\Eye\Sample\SRanipal_MirrorCameraSample_Eye.cs" />
      <Compile Include="Assets\Viveport\Example\Scripts\ViveportDemo_DLC.cs" />
-     <Compile Include="Assets\Scripts\MoveInFrontofUser.cs" />
      <None Include="Assets\ViveSR\Shaders\Unlit-Alpha2Gray.shader" />
      <None Include="Assets\ViveSR\Shaders\DartBoardShader.shader" />
     <Reference Include="UnityEngine">

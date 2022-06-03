@@ -206,7 +206,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 9d5cd09a698c43d43b67b0cbc32b1ce9, type: 3}
+  m_Sprite: {fileID: 0}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -278,8 +278,8 @@ MonoBehaviour:
   - {fileID: 21300000, guid: 25ce10987c0b0604fb2fb599c8a7d085, type: 3}
   - {fileID: 21300000, guid: 22ffc8ec5657ca6478279d83f0bf68ff, type: 3}
   - {fileID: 21300000, guid: 08f7861185626754a9e84a54adfe71c4, type: 3}
-  showImageDuration: 0.2
-  fadeOutInDuration: 0.75
+  showImageDuration: 7
+  fadeOutInDuration: 0.6
   manual: 0
   showImageTimeLeft: 0
   imageChangeEvent:
@@ -298,6 +298,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 746b6702f318c5b46ba9981f6ded1cd1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  filename: test
   imageSlideShow: {fileID: 0}
   timer: 0.5
 --- !u!1 &541096545

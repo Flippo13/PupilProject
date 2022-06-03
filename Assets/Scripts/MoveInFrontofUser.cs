@@ -7,13 +7,12 @@ public class MoveInFrontofUser : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+        SetInFront();
     }
 
     // Update is called once per frame
     void Update()
     {
-        SetInFront();
     }
 
     private void SetInFront()

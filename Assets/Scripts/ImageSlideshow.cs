@@ -26,7 +26,6 @@ public class ImageSlideshow : MonoBehaviour
     public float showImageDuration;
     public float fadeOutInDuration;
     public bool manual;
-
     private Image currImage; 
     private Sprite currSprite; 
     private float fadeTimeLeft;
@@ -49,17 +48,19 @@ public class ImageSlideshow : MonoBehaviour
     public PrintPupilDillation printPupilDillation;
 
     // Start is called before the first frame update
-    async void Start()
+    void Start()
     {
         fadeTimeLeft = fadeOutInDuration; 
         showImageTimeLeft = showImageDuration;
         fadeSpeed = 1/fadeOutInDuration; 
         currImage = GetComponent<Image>();
+        
         //SetNewNeutralImage(); 
         neutralImage = neutralImageArray[0];
         currImage.sprite = neutralImage;
 
         imageChangeEvent.AddListener(printPupilDillation.NewImage);
+        imageChangeEvent.Invoke(currImage.sprite.name);
     }
 
     // Update is called once per frame
@@ -100,7 +101,7 @@ public class ImageSlideshow : MonoBehaviour
             else {
                 index++; 
                 showImageTimeLeft = showImageDuration;
-                if (index < imageArray.Length-1) {
+                if (index < imageArray.Length) {
                         currImage.sprite = imageArray[index]; 
                         imageChangeEvent.Invoke(currImage.sprite.name);
                         currState = SlideShowSate.FadeIn;
@@ -117,7 +118,6 @@ public class ImageSlideshow : MonoBehaviour
 
 
     private void SetNewNeutralImage(){
-        Debug.Log("New Neutral image");
         neutralIndex++;
         for(int i = 0; i < neutralImageArray.Length;i++){
             if (neutralImageArray[i].name == "Neutral"+neutralIndex)
@@ -126,23 +126,12 @@ public class ImageSlideshow : MonoBehaviour
             }
         }
     }
- /*
-    public void NextImage(){
-        index++; 
-        if (index < imageArray.Length-1) {
-            currImage.sprite = imageArray[index]; 
-            imageAlpha = 0;
-            fadingIn = true;
-            fadingOut = false;
-        }
-    }
-*/
     public bool FadeOutIn(bool fadeOut){
         if (fadeOut) {
             imageAlpha -= fadeSpeed * Time.deltaTime;
-            currImage.color = new Color(1,1,1,imageAlpha);
+                currImage.color = new Color(1,1,1,imageAlpha);
             
-            if (imageAlpha <= 0) {
+            if (imageAlpha <= 0.3f) {
                 showNeutralImage = !showNeutralImage;
                 currState = SlideShowSate.NextImage;
                 return true; 

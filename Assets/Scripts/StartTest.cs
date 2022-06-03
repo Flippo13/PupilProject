@@ -15,7 +15,7 @@ public class StartTest : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Keyboard.current.anyKey.wasPressedThisFrame){
+        if (Keyboard.current.enterKey.wasPressedThisFrame){
             NextSceneLoad(); 
         }
     }
